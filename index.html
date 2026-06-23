@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoMix - Press Kit & Product Catalog</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f8f9fa; color: #212529; margin: 0; padding: 40px 20px; line-height: 1.5; }
+        .container { max-width: 1100px; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 60px; }
+        header h1 { font-size: 2.5rem; margin-bottom: 10px; color: #111; letter-spacing: -0.5px; }
+        header p { font-size: 1.2rem; color: #6c757d; max-width: 600px; margin: 0 auto; }
+        
+        /* 4'lü Katalog Izgarası */
+        .catalog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; margin-bottom: 60px; }
+        .catalog-item { background: white; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.03); border: 1px solid #eee; }
+        .catalog-item img { max-width: 100%; height: auto; border-radius: 4px; margin-bottom: 15px; }
+        .catalog-item h3 { margin: 10px 0 8px 0; font-size: 1.15rem; color: #111; }
+        .catalog-item p { color: #6c757d; font-size: 0.9rem; margin: 0; }
+        
+        /* Detaylar */
+        .specs { background: #fff; border-radius: 12px; padding: 35px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); margin-bottom: 50px; border: 1px solid #eee; }
+        .specs h2 { margin-top: 0; font-size: 1.5rem; margin-bottom: 20px; }
+        ul { padding-left: 20px; margin: 0; }
+        li { margin-bottom: 10px; font-size: 1.05rem; }
+        
+        .buttons { text-align: center; gap: 15px; display: flex; justify-content: center; flex-wrap: wrap; }
+        .btn { display: inline-block; padding: 14px 28px; border-radius: 6px; text-decoration: none; font-weight: bold; transition: background 0.2s; }
+        .btn-primary { background: #000; color: #fff; }
+        .btn-primary:hover { background: #222; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>AutoMix Press Kit</h1>
+        <p>A minimalist, multi-source audio platform designed for seamless global streaming with automatic system language integration.</p>
+    </header>
+
+    <!-- Yenilenen 4'lü Telefon Ekranı Kataloğu -->
+    <section class="catalog-grid">
+        <div class="catalog-item">
+            <img src="now_player.png" alt="AutoMix Now Playing">
+            <h3>Now Playing</h3>
+            <p>A clean, clutter-free user interface focused purely on smooth stream playback and core player functionality.</p>
+        </div>
+        <div class="catalog-item">
+            <img src="podcast.png" alt="Podcast Integration">
+            <h3>Podcast Discovery</h3>
+            <p>Instant access to global podcasts built directly into a lightweight, distraction-free search layout powered by iTunes API.</p>
+        </div>
+        <div class="catalog-item">
+            <img src="world_radio.png" alt="World Radio Streams">
+            <h3>World Radio</h3>
+            <p>Seamlessly integrate and stream online radio stations from across the globe via live network URLs.</p>
+        </div>
+        <div class="catalog-item">
+            <img src="user_guide.png" alt="AutoMix User Guide">
+            <h3>User Guide</h3>
+            <p>An intuitive, built-in help guide ensuring users get the most out of AutoMix’s powerful streaming utilities.</p>
+        </div>
+    </section>
+
+    <!-- Teknik Detaylar -->
+    <section class="specs">
+        <h2>Quick Application Specs</h2>
+        <ul>
+            <li><strong>Developer:</strong> ParlakDevelop</li>
+            <li><strong>Platform:</strong> Android</li>
+            <li><strong>Core Utility:</strong> Online Radio Streams, iTunes Podcast API Integration, Multi-source Audio Playback</li>
+            <li><strong>Design Aesthetic:</strong> Minimal, highly functional, and user-centric layout</li>
+            <li><strong>Localization:</strong> Native support for 14 distinct languages, automatically syncing with the device's system language.</li>
+        </ul>
+    </section>
+
+    <div class="buttons">
+        <a href="#" class="btn btn-primary">View on Google Play</a>
+    </div>
+</div>
+
+</body>
+</html>
