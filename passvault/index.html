@@ -1,1 +1,437 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PassVault - Güvenli Dijital Kasanız</title>
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #151c2e;
+            --accent-color: #6c63ff;
+            --accent-hover: #5249d7;
+            --text-main: #ffffff;
+            --text-muted: #8fa0dd;
+            --neon-red: #ff3838;
+        }
 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            font-weight: bold;
+            font-size: 24px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-dot {
+            width: 12px;
+            height: 12px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-color);
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--text-main);
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1100px;
+            margin: 60px auto;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            background: linear-gradient(45deg, #fff, var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background-color: var(--accent-color);
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 15px rgba(108, 99, 255, 0.4);
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--text-muted);
+            color: var(--text-main);
+            margin-left: 15px;
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: #fff;
+        }
+
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* Features Section */
+        .features {
+            background-color: var(--card-bg);
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px auto;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+        }
+
+        .grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--bg-color);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        /* Showcase Section (Ekran Görüntüleri) */
+        .showcase {
+            max-width: 1100px;
+            margin: 80px auto;
+            padding: 20px;
+        }
+
+        .screenshot-container {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 20px 10px;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-color) var(--card-bg);
+        }
+
+        .screenshot-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .screenshot-container::-webkit-scrollbar-track {
+            background: var(--card-bg);
+            border-radius: 10px;
+        }
+
+        .screenshot-container::-webkit-scrollbar-thumb {
+            background-color: var(--accent-color);
+            border-radius: 10px;
+        }
+
+        .screenshot-item {
+            flex: 0 0 240px; /* Her ekran kartının genişliği */
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .screenshot-item:hover {
+            transform: scale(1.03);
+        }
+
+        .screenshot-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 18px;
+            border: 3px solid var(--card-bg);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            background-color: #000;
+        }
+
+        .screenshot-label {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Press Kit Section */
+        .press-kit {
+            background-color: var(--card-bg);
+            padding: 80px 20px;
+        }
+
+        .press-grid {
+            max-width: 1100px;
+            margin: 40px auto 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .press-grid {
+                grid-template-columns: 1fr;
+            }
+            .btn {
+                display: block;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+            .btn-outline {
+                margin-left: 0;
+            }
+            .screenshot-container {
+                padding-bottom: 30px;
+            }
+        }
+
+        .press-sidebar {
+            background-color: var(--bg-color);
+            padding: 25px;
+            border-radius: 10px;
+            height: fit-content;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .press-sidebar h4 {
+            margin-top: 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+        }
+
+        .press-sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .press-sidebar li {
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+
+        .press-sidebar strong {
+            color: var(--text-muted);
+            display: block;
+            font-size: 13px;
+            text-transform: uppercase;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 40px 20px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <div class="logo-dot"></div> PassVault
+        </div>
+        <nav>
+            <a href="#ozellikler">Özellikler</a>
+            <a href="#ekranlar">Ekranlar</a>
+            <a href="#presskit">Press Kit</a>
+            <a href="privacy.html" target="_blank">Gizlilik Politikası</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Şifreleriniz, Kartlarınız ve Özel Notlarınız Güvende</h1>
+            <p>PassVault; şifrelerinizi, kredi kartlarınızı, gizli rehberinizi ve serbest notlarınızı tek bir güvenli kasada saklayan %100 çevrimdışı (offline) ve askeri düzeyde şifreli bir mobil uygulamadır.</p>
+            <a href="#" class="btn">Google Play'den İndir</a>
+            <a href="#presskit" class="btn btn-outline">Medya Kiti (Press Kit)</a>
+        </div>
+        <div class="hero-image">
+            <img src="feature-graphic.png" alt="PassVault Özellik Grafiği" style="max-width: 100%; height: auto; border-radius: 12px; border: 2px solid var(--accent-color); box-shadow: 0 0 20px rgba(108, 99, 255, 0.3);">
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="ozellikler">
+        <div class="section-title">
+            <h2>Kişisel Güvenli Kasanız</h2>
+            <p>PassVault, verilerinizi asla sunucularda saklamaz. Android Keystore sistemi ile cihazınızın içinde şifreler.</p>
+        </div>
+        <div class="grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔑</div>
+                <h3>Şifre Yöneticisi</h3>
+                <p>Güçlü şifreler üretin, kategorilere göre filtreleyin ve tek dokunuşla kopyalayıp kullanın.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💳</div>
+                <h3>Kart Kasası</h3>
+                <p>Kredi kartı ve banka kartı bilgilerinizi şifreli olarak yanınızda taşıyın, hızlıca erişin.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📞</div>
+                <h3>Gizli Rehber</h3>
+                <p>Önemli veya kimsenin görmesini istemediğiniz özel telefon numaralarını kasanızda gizleyin.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📝</div>
+                <h3>Güvenli Notlar</h3>
+                <p>T.C. kimlik numaraları, adresler veya kişisel düşünceleriniz için şifreli serbest not defteri.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Showcase Section (Ekran Görüntüleri) -->
+    <section class="showcase" id="ekranlar">
+        <div class="section-title">
+            <h2>Uygulamadan Ekran Görüntüleri</h2>
+            <p>PassVault'un sade, modern ve göz yormayan arayüzüne yakından bakın.</p>
+        </div>
+        <div class="screenshot-container">
+            <div class="screenshot-item">
+                <img src="ss1.png" alt="PassVault PIN Giriş Ekranı">
+                <div class="screenshot-label">Güvenli PIN Girişi</div>
+            </div>
+            <div class="screenshot-item">
+                <img src="ss2.png" alt="PassVault Şifre Listesi">
+                <div class="screenshot-label">Şifre Yönetimi</div>
+            </div>
+            <div class="screenshot-item">
+                <img src="ss3.png" alt="PassVault Kredi Kartı Detay">
+                <div class="screenshot-label">Şifreli Kart Detayları</div>
+            </div>
+            <div class="screenshot-item">
+                <img src="ss4.png" alt="PassVault Telefonlar ve Notlar">
+                <div class="screenshot-label">Kişisel Gizli Notlar</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Press Kit Section -->
+    <section class="press-kit" id="presskit">
+        <div class="section-title">
+            <h2>Medya ve İnceleme Kiti (Press Kit)</h2>
+            <p>PassVault hakkında yazı yazmak veya inceleme videosu çekmek isteyen editörler için gerekli tüm materyaller.</p>
+        </div>
+        <div class="press-grid">
+            <div class="press-sidebar">
+                <h4>Uygulama Künyesi</h4>
+                <ul>
+                    <li><strong>Geliştirici</strong> ParlakDevelop</li>
+                    <li><strong>Çıkış Tarihi</strong> Temmuz 2026</li>
+                    <li><strong>Platform</strong> Android (Google Play)</li>
+                    <li><strong>Fiyat</strong> Ücretsiz</li>
+                    <li><strong>İletişim</strong> parlakdevelop@gmail.com</li>
+                </ul>
+            </div>
+            <div class="press-content">
+                <h3>PassVault Nedir?</h3>
+                <p>PassVault, günümüzün en büyük problemi olan veri sızıntılarına karşı geliştirilmiş, %100 yerel ve çevrimdışı çalışan bir güvenlik uygulamasıdır. Kullanıcıların verileri hiçbir sunucuya gitmez, internet bağlantısı gerektirmez. Cihazın kendi güvenli alanı (Keystore) içinde askeri standartlarda şifrelenir.</p>
+                
+                <h3>Temel Medya Görselleri</h3>
+                <p>Tanıtımlarda kullanabileceğiniz yüksek çözünürlüklü logoları ve mağaza ekran görüntülerini aşağıdaki butonları kullanarak indirebilirsiniz.</p>
+                <div style="margin-top: 20px;">
+                    <a href="app-logo.png" download class="btn" style="padding: 10px 20px; font-size: 14px;">Logoyu İndir (.png)</a>
+                    <a href="https://github.com/parlakdevelop/parlakdevelop.github.io" target="_blank" class="btn btn-outline" style="padding: 10px 20px; font-size: 14px; margin-left: 10px;">Tüm Görselleri GitHub'da Gör</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 ParlakDevelop. Tüm hakları saklıdır. | <a href="privacy.html" target="_blank">Gizlilik Politikası</a></p>
+    </footer>
+
+</body>
+</html>
